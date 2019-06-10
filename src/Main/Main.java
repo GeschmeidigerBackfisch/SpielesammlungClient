@@ -21,7 +21,7 @@ import java.rmi.RemoteException;
 public class Main extends Application implements EventHandler {
 
     private String host = "localhost";
-    private static final String BIND_NAME = "PicShare-Server";
+    private static final String BIND_NAME = "Spielesammlung-Server";
     private ServerInterface server;
     private ClientInterface client;
     private String username;
