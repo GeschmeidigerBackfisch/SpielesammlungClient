@@ -1,13 +1,16 @@
 package Main;
 
 import java.rmi.Remote;
+import java.rmi.RemoteException;
 
 public interface ClientInterface extends Remote {
-    void nachrichtAusgeben(String msg);
+    void nachrichtAusgeben(String var1) throws RemoteException;
 
-    //Schwimmen
-    void spielBeenden(int grund);
-    void zugPosition(int spieler);
-    void kartenAusteilenSpieler(int[] handkarten);
-    void kartenAusteilenPott(int[] pottkarten);
+    void spielBeenden(int var1) throws RemoteException;
+
+    void zugPosition(int var1) throws RemoteException;
+
+    void kartenAusteilenSpieler(int[] var1) throws RemoteException;
+
+    void kartenAusteilenPott(int[] var1) throws RemoteException;
 }
