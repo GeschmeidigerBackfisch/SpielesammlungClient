@@ -20,7 +20,7 @@ import java.rmi.RemoteException;
 
 public class Main extends Application implements EventHandler {
 
-    private String host = "localhost";
+    private String host = "localhost:1099";
     private static final String BIND_NAME = "Spielesammlung-Server";
     private ServerInterface server;
     private ClientInterface client;
@@ -79,9 +79,15 @@ public class Main extends Application implements EventHandler {
                     this.server.anmelden(client, username, 1);
                     break;
                 case "MauMau":
+                    Stage maumauStage = new SchwimmenFrame();
+                    this.client = new ClientImpl(maumauStage);
+                    this.launchStage.hide();
                     this.server.anmelden(client, username, 2);
                     break;
                 case "SchwarzerPeter":
+                    Stage schwarzerpeterStage = new SchwimmenFrame();
+                    this.client = new ClientImpl(schwarzerpeterStage);
+                    this.launchStage.hide();
                     this.server.anmelden(client, username, 3);
                     break;
             }

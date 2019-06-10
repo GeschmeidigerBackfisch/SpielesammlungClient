@@ -16,7 +16,7 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
 
     @Override
     public void nachrichtAusgeben(String msg) {
-
+        System.out.println(msg);
     }
 
     @Override
@@ -43,13 +43,4 @@ public class ClientImpl extends UnicastRemoteObject implements ClientInterface {
         this.gameStage = stage;
     }
 
-    public static interface ClientInterface extends Remote {
-        void nachrichtAusgeben(String msg);
-
-        //Schwimmen
-        void spielBeenden(int grund);
-        void zugPosition(int spieler);
-        void kartenAusteilenSpieler(int[] handkarten);
-        void kartenAusteilenPott(int[] pottkarten);
-    }
 }
