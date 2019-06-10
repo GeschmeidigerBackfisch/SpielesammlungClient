@@ -1,6 +1,5 @@
 package Main;
 
-import com.sun.javafx.scene.control.LabeledText;
 import javafx.application.Application;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -14,7 +13,18 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.net.MalformedURLException;
+import java.rmi.Naming;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+
 public class Main extends Application implements EventHandler {
+
+    private String host = "localhost";
+    private static final String BIND_NAME = "PicShare-Server";
+    private ServerInterface server;
+    private ClientInterface client;
+    private String username;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -52,8 +62,16 @@ public class Main extends Application implements EventHandler {
     }
 
     public void initConnection() {
-
+        ServerInterface server = null;
+        try {
+            String bindURL = "rmi://" + host + "/" + BIND_NAME;
+            server = (ServerInterface) Naming.lookup(bindURL);
+            this.server = server;
+        } catch (NotBoundException | MalformedURLException | RemoteException e) {
+            System.out.println(e.getMessage());
+        }
     }
+
 
 
     public static void main(String[] args) {
